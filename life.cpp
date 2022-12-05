@@ -86,11 +86,11 @@ public:
         for (int i = 0; i < this->rows; i++) {
             for (int j = 0; j < this->cols; j++) {
                 if ((*(this->work_area + i) + j)->get_alive()) {
-                    // printf("\033[42m ");
-                    cout << "$";
+                    printf("\033[102m  ");
+                    // cout << "$$";
                 } else {
-                    // printf("\033[0m ");
-                    cout << "-";
+                    printf("\033[0m  ");
+                    // cout << "--";
                 }
             }
             cout << endl;
@@ -127,11 +127,12 @@ public:
 
 int main () {
     srand(time(NULL));
-    canvas c(10, 10);
+    canvas *c = new canvas(30, 30);
     for (int i = 0; i < 100; i++) {
-        c.show();
-        c.next_epoch();
+        c->show();
+        c->next_epoch();
         sleep(1);
     };
+    delete c;
     return 0;
 }
